@@ -9,7 +9,15 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-test-push:
+  print_context:
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          EVENT_CONTEXT: ${{ toJson(github.event) }}
+        run: |
+          echo $EVENT_CONTEXT
+
+  build_test_push:
     name: Build, Test and Push Docker Image
     runs-on: ubuntu-latest
 
