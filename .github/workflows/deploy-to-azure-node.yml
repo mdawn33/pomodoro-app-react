@@ -30,11 +30,11 @@ jobs:
         npm run build --if-present
         npm run test --if-present
 
-    # - name: Upload artifact for deployment job
-    #   uses: actions/upload-artifact@v4
-    #   with:
-    #     name: node-app
-    #     path: .
+    - name: Upload artifact for deployment job
+      uses: actions/upload-artifact@v4
+      with:
+        name: pomodoro-app
+        path: .
 
   deploy:
     permissions:
@@ -47,10 +47,10 @@ jobs:
     #   url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
-    # - name: Download artifact from build job
-    #   uses: actions/download-artifact@v4
-    #   with:
-    #     name: node-app
+    - name: Download artifact from build job
+      uses: actions/download-artifact@v4
+      with:
+        name: pomodoro-app
 
     - name: Azure CLI login
       uses: azure/login@v3
